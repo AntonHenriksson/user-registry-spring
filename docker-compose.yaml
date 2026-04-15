@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: mariadb_local
+    environment:
+      - MARIADB_DATABASE=mydb
+      - MARIADB_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: spring_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_URL=jdbc:mariadb://db:3306/mydb
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
