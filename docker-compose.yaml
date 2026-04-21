@@ -25,3 +25,5 @@ services:
       - DB_URL=jdbc:mariadb://db:3306/mydb
       - DB_USERNAME=root
       - DB_PASSWORD=password
+      - JWT_SECRET=${JWT_SECRET}
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=DEBUG

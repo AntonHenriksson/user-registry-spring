@@ -15,6 +15,7 @@ public class AppUser {
     String firstName;
     @Column(name = "last_name", nullable = false)
     String lastName;
+    private String roles;
 
     //making this to ease the pain of implementing a payment system which the task does not require me to
     Float funds;
@@ -45,6 +46,14 @@ public class AppUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     public String getFirstName() {

@@ -1,4 +1,4 @@
-package se.anton.userregistryspring.app.dto;
+package se.anton.userregistryspring.app.dto.appuser;
 
 
 //todo add validation

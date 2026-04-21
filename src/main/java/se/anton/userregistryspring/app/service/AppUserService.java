@@ -2,26 +2,29 @@ package se.anton.userregistryspring.app.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import se.anton.userregistryspring.app.domain.AppUser;
-import se.anton.userregistryspring.app.dto.AppUserRequest;
-import se.anton.userregistryspring.app.dto.AppUserResponse;
+import se.anton.userregistryspring.app.dto.appuser.AppUserRequest;
+import se.anton.userregistryspring.app.dto.appuser.AppUserResponse;
 import se.anton.userregistryspring.app.mapper.AppUserMapper;
 import se.anton.userregistryspring.app.repo.AppUserRepo;
 
 
 @Service
 public class AppUserService {
-    AppUserRepo appUserRepo;
+    private final AppUserRepo appUserRepo;
+    private final PasswordEncoder passwordEncoder;
 
-    public AppUserService(AppUserRepo appUserRepo) {
+    public AppUserService(AppUserRepo appUserRepo, PasswordEncoder passwordEncoder) {
         this.appUserRepo = appUserRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
     public AppUserResponse saveAppUser(AppUserRequest request) {
         AppUser appUser = AppUserMapper.toEntity(request);
-        //todo add password encoding here
+        appUser.setPassword(passwordEncoder.encode(request.password()));
         appUserRepo.save(appUser);
         return AppUserMapper.toResponse(appUser);
     }

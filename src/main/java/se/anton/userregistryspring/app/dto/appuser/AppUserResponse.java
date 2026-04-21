@@ -1,10 +1,11 @@
-package se.anton.userregistryspring.app.dto;
+package se.anton.userregistryspring.app.dto.appuser;
 
 public record AppUserResponse(
         String id,
         String email,
         String firstName,
         String lastName,
-        Float funds
+        Float funds,
+        String roles
 ) {
 }

@@ -1,8 +1,8 @@
 package se.anton.userregistryspring.app.mapper;
 
 import se.anton.userregistryspring.app.domain.AppUser;
-import se.anton.userregistryspring.app.dto.AppUserRequest;
-import se.anton.userregistryspring.app.dto.AppUserResponse;
+import se.anton.userregistryspring.app.dto.appuser.AppUserRequest;
+import se.anton.userregistryspring.app.dto.appuser.AppUserResponse;
 
 public class AppUserMapper {
 
@@ -12,6 +12,7 @@ public class AppUserMapper {
         appUser.setFirstName(request.firstName());
         appUser.setLastName(request.lastName());
         appUser.setFunds(request.funds());
+        appUser.setRoles("USER");
         return appUser;
     }
 
@@ -21,7 +22,8 @@ public class AppUserMapper {
                 appUser.getEmail(),
                 appUser.getFirstName(),
                 appUser.getLastName(),
-                appUser.getFunds()
+                appUser.getFunds(),
+                appUser.getRoles()
         );
     }
 
