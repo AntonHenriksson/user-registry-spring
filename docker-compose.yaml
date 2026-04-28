@@ -1,6 +1,8 @@
 services:
   db:
     image: mariadb:latest
+    profiles:
+      - dev
     container_name: mariadb_local
     environment:
       - MARIADB_DATABASE=mydb
@@ -22,8 +24,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DB_URL=jdbc:mariadb://db:3306/mydb
-      - DB_USERNAME=root
-      - DB_PASSWORD=password
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
       - JWT_SECRET=${JWT_SECRET}
-      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=DEBUG
