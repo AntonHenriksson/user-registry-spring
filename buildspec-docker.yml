@@ -8,8 +8,8 @@ phases:
   build:
     commands:
       - echo "Building Docker-image..."
-      - docker build -t $DOCKERHUB_USERNAME/checkout-spring:latest .
+      - docker build -t $DOCKERHUB_USERNAME/user-registry-spring:latest .
   post_build:
     commands:
       - echo "Push to dockerHUB..."
-      - docker push $DOCKERHUB_USERNAME/checkout-spring:latest
+      - docker push $DOCKERHUB_USERNAME/user-registry-spring:latest
