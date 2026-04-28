@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Authing dockerHUB..."
+      - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+  build:
+    commands:
+      - echo "Building Docker-image..."
+      - docker build -t $DOCKERHUB_USERNAME/checkout-spring:latest .
+  post_build:
+    commands:
+      - echo "Push to dockerHUB..."
+      - docker push $DOCKERHUB_USERNAME/checkout-spring:latest

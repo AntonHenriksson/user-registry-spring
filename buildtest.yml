@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
+  pre_build:
+    commands:
+      - echo "Checking environment..."
+      - mvn -version
+
+  build:
+    commands:
+      - echo "Running unit tests..."
+
+      - mvn test
+
+  post_build:
+    commands:
+      - echo "Tests completed successfully!"
+
+reports:
+  junit-reports:
+    files:
+      - '**/target/surefire-reports/*.xml'
+    base-directory: 'target/surefire-reports'
+    discard-paths: yes

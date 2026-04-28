@@ -2,6 +2,8 @@ package se.anton.userregistryspring.app.domain;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 public class AppUser {
     @Id
@@ -18,7 +20,7 @@ public class AppUser {
     private String roles;
 
     //making this to ease the pain of implementing a payment system which the task does not require me to
-    Float funds;
+    private BigDecimal funds;
 
     public AppUser() {
     }
@@ -72,11 +74,11 @@ public class AppUser {
         this.lastName = lastName;
     }
 
-    public Float getFunds() {
+    public BigDecimal getFunds() {
         return funds;
     }
 
-    public void setFunds(Float funds) {
+    public void setFunds(BigDecimal funds) {
         this.funds = funds;
     }
 }
