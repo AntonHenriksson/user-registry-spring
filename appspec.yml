@@ -3,10 +3,10 @@ os: linux
 files:
   - source: /docker-compose.yml
     destination: /home/ec2-user/
-  - source: /scripts/
-    destination: /home/ec2-user/scripts/
+  - source: /deploy.sh
+    destination: /home/ec2-user/
 hooks:
   AfterInstall:
-    - location: scripts/deploy.sh
+    - location: deploy.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
