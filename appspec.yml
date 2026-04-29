@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /docker-compose.yml
     destination: /home/ec2-user/
+  - source: /scripts/
+    destination: /home/ec2-user/scripts/
 hooks:
   AfterInstall:
     - location: scripts/deploy.sh
