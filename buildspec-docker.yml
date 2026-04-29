@@ -13,3 +13,9 @@ phases:
     commands:
       - echo "Push to dockerHUB..."
       - docker push $DOCKERHUB_USERNAME/user-registry-spring:latest
+artifacts:
+  files:
+    - 'appspec.yml'
+    - 'docker-compose.yml'
+    - 'scripts/**/*'
+  discard-paths: yes
