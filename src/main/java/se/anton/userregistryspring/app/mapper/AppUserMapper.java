@@ -11,7 +11,6 @@ public class AppUserMapper {
         appUser.setEmail(request.email());
         appUser.setFirstName(request.firstName());
         appUser.setLastName(request.lastName());
-        appUser.setFunds(request.funds());
         appUser.setRoles("USER");
         return appUser;
     }
@@ -22,7 +21,6 @@ public class AppUserMapper {
                 appUser.getEmail(),
                 appUser.getFirstName(),
                 appUser.getLastName(),
-                appUser.getFunds(),
                 appUser.getRoles()
         );
     }

@@ -13,7 +13,6 @@ import se.anton.userregistryspring.app.dto.appuser.AppUserResponse;
 import se.anton.userregistryspring.app.repo.AppUserRepo;
 import se.anton.userregistryspring.app.service.AppUserService;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,8 +40,7 @@ public class AppUserServiceTest {
                 "email@email.se",
                 "password",
                 "testfirst",
-                "testlast",
-                BigDecimal.valueOf(30)
+                "testlast"
         );
         appUserService.saveAppUser(request);
 
